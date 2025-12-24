@@ -22,12 +22,16 @@
   margin: 0;
 }
 
+html, body {
+  height: 100vh;
+  max-height: 100vh;
+}
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 
   font-family: 'nunito';
-  width: 100vw;
 }
 
 img, picture, video, canvas, svg {
@@ -52,12 +56,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-holder {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
     align-items: center;
     align-content: center;
+
+    height: 100%;
 }
 
 .header {
@@ -81,21 +83,41 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(2.5rem*3);
 }
 
-.content {
+.controls {
     display: grid;
+    align-items: center;
     justify-content: center;
 }
 
 #add {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
 
-    width: 8rem;
+    width: 10rem;
     margin: 2.5rem 0;
 }
 
 #add img {
     height: 1rem;
     width: auto;
+}
+
+.content {
+    display: grid;
+    justify-content: center;
+
+    grid-template-columns: repeat(auto-fit, 12.5rem);
+    grid-template-rows: repeat(auto-fit, 12.5rem);
+    gap: 2.5rem;
+
+    height: 100%;
+    padding: 0 2.5rem;
+}
+
+.sample-book {
+    background-color: black;
+    height: 100%;
+    width: 100%;
 }
