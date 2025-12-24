@@ -14,3 +14,88 @@
     font-style: italic;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  font-family: 'nunito';
+  width: 100vw;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+.content-holder {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: calc(2.5rem*3) calc(2.5rem*3);
+    width: 100%;
+    gap: 30%;
+
+    background-color: lavender;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#branding {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#login {
+    width: calc(2.5rem*3);
+}
+
+.content {
+    display: grid;
+    justify-content: center;
+}
+
+#add {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: 8rem;
+    margin: 2.5rem 0;
+}
+
+#add img {
+    height: 1rem;
+    width: auto;
+}

@@ -4,6 +4,7 @@ function Book (name, author, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.")
     }
+
     id = null;
     this.name = name;
     this.author = author;
@@ -17,3 +18,9 @@ function addBookToLibrary(name, author, pages, read) {
 
     myLibrary.push(newBook);
 }
+
+const add = document.querySelector("#add");
+
+add.addEventListener('click', function (event) {
+    console.log(event);
+}) 
