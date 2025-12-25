@@ -20,7 +20,13 @@ function addBookToLibrary(name, author, pages, read) {
 }
 
 const add = document.querySelector("#add");
+const close = document.querySelector("#close");
+const dialog = document.querySelector("dialog");
 
-add.addEventListener('click', function (event) {
-    console.log(event);
+add.addEventListener('click', () => {
+    dialog.showModal();
 }) 
+
+close.addEventListener('click', () => {
+    dialog.close();
+})

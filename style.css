@@ -55,9 +55,20 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+button {
+    border: none;
+    padding: 1.25rem;
+}
+
+button:hover {
+    /* placeholder color */
+    background-color: pink;
+    /* placeholder color */
+}
+
 .content-holder {
     align-items: center;
-    align-content: center;
+    justify-content: center;
 
     height: 100%;
 }
@@ -81,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #login {
     width: calc(2.5rem*3);
+    padding: 0.6rem
 }
 
 .controls {
@@ -112,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-rows: repeat(auto-fit, 17.5rem);
     gap: 2.5rem;
 
-    height: 100%;
+    /* height: 100%; */
     padding: 0 2.5rem;
 }
 
@@ -156,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.read, .modify {
+.read, .unread, .modify {
     background-origin: border-box;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -168,6 +180,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .read {
     background-image: url('./image-assets/eye-outline.svg');
+}
+
+.unread {
+    background-image: url('./image-assets/eye-closed.svg');
 }
 
 .modify {
