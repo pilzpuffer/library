@@ -168,7 +168,7 @@ button:hover {
     align-items: center;
 }
 
-.read, .unread, .modify {
+.read, .unread, .modify, #close {
     background-origin: border-box;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -188,5 +188,9 @@ button:hover {
 
 .modify {
     background-image: url('./image-assets/cog-outline.svg');
+}
+
+#close {
+    background-image: url('./image-assets/close.svg');
 }
 
