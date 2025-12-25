@@ -108,16 +108,47 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     justify-content: center;
 
-    grid-template-columns: repeat(auto-fit, 12.5rem);
-    grid-template-rows: repeat(auto-fit, 12.5rem);
+    grid-template-columns: repeat(auto-fit, 15rem);
+    grid-template-rows: repeat(auto-fit, 17.5rem);
     gap: 2.5rem;
 
     height: 100%;
     padding: 0 2.5rem;
 }
 
-.sample-book {
+.book {
+    /* placeholder color value! */
     background-color: black;
+    /* placeholder color value! */
     height: 100%;
     width: 100%;
+    border-radius: 5%;
+
+    /* placeholder color value! */
+    color: wheat;
+    /* placeholder color value! */
+}
+
+.book-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 2.5rem);
+    gap: 1.25rem;
+}
+
+.read, .modify {
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 2.5rem 2.5rem;
+
+    border-radius: 20%;
+    padding: 1.25rem;
+}
+
+.read {
+    background-image: url('./image-assets/eye-outline.svg');
+}
+
+.modify {
+    background-image: url('./image-assets/cog-outline.svg');
 }
