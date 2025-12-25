@@ -117,32 +117,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .book {
-    /* placeholder color value! */
+    display: grid;
+    grid-template-rows: 10.5rem 1fr;
+    /* placeholder color values! */
     background-color: black;
-    /* placeholder color value! */
+    color: wheat;
+    /* placeholder color values! */
+    
     height: 100%;
     width: 100%;
     border-radius: 5%;
+    padding: 1.25rem;
+}
 
-    /* placeholder color value! */
-    color: wheat;
-    /* placeholder color value! */
+.top-part {
+    display: grid;
+    grid-template-columns: 1fr 2.5rem;
+    gap: 0.6rem;
+}
+
+.bottom-part {
+    display: grid;
+    grid-template-rows: 1fr 1.25rem;
+    gap: 0.6rem;
+    justify-items: center;
+}
+
+.book-title {
+    font-size: 1.25rem;
 }
 
 .book-controls {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 2.5rem);
-    gap: 1.25rem;
+    grid-template-rows: repeat(2, 2.5rem);
+    gap: 0.15rem;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .read, .modify {
     background-origin: border-box;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: 2.5rem 2.5rem;
+    background-size: 2rem 2rem;
 
     border-radius: 20%;
-    padding: 1.25rem;
+    padding: 1rem;
 }
 
 .read {
@@ -152,3 +173,4 @@ h1, h2, h3, h4, h5, h6 {
 .modify {
     background-image: url('./image-assets/cog-outline.svg');
 }
+
