@@ -54,21 +54,29 @@
                 <div>
                     <label for="book-genre">Genre</label>
                     <select name="book-genre" id="book-genre">
-                        <option>--Please choose an option--</option>
                         <optgroup label="Fiction">
                             <option>Crime</option>
-                            <option>Not Crime</option>
+                            <option>Fantasy</option>
+                            <option>Romance</option>
+                            <option>Sci-Fi</option>
+                            <option>Horror</option>
                         </optgroup>
                         <optgroup label="Nonfiction">
-                            <option>Real Crime</option>
-                            <option>Real Not Crime</option>
+                            <option>Biography</option>
+                            <option>History</option>
+                            <option>Poetry</option>
+                            <option>Science</option>
+                            <option>Travel</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option>Other</option>
                         </optgroup>
                     </select>
                 </div>
 
                 <div>
                     <label for="book-pages">Pages</label>
-                    <input type="number" name="book-pages" id="book-pages">
+                    <input type="number" min="1" name="book-pages" id="book-pages">
                 </div>
 
                 <button id="new">Add a new book</button>
