@@ -41,29 +41,37 @@
         <dialog>
             <button id="close"></button>
             <form>
-                <label for="book-name">Title</label>
-                <input type="text" name="book-name" id="book-name">
+                <div>
+                    <label for="book-name">Title</label>
+                    <input type="text" name="book-name" id="book-name">
+                </div>
 
-                <label for="book-author">Author</label>
-                <input type="text" name="book-author" id="book-author">
+                <div>
+                    <label for="book-author">Author</label>
+                    <input type="text" name="book-author" id="book-author">
+                </div>
 
-                <label for="book-genre">Genre</label>
-                <select name="book-genre" id="book-genre">
-                    <option>--Please choose an option--</option>
-                    <optgroup label="Fiction">
-                        <option>Crime</option>
-                        <option>Not Crime</option>
-                    </optgroup>
-                    <optgroup label="Nonfiction">
-                        <option>Real Crime</option>
-                        <option>Real Not Crime</option>
-                    </optgroup>
-                </select>
+                <div>
+                    <label for="book-genre">Genre</label>
+                    <select name="book-genre" id="book-genre">
+                        <option>--Please choose an option--</option>
+                        <optgroup label="Fiction">
+                            <option>Crime</option>
+                            <option>Not Crime</option>
+                        </optgroup>
+                        <optgroup label="Nonfiction">
+                            <option>Real Crime</option>
+                            <option>Real Not Crime</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-                <label for="book-pages">Pages</label>
-                <input type="number" name="book-pages" id="book-pages">
+                <div>
+                    <label for="book-pages">Pages</label>
+                    <input type="number" name="book-pages" id="book-pages">
+                </div>
 
-                <button>Add a new book</button>
+                <button id="new">Add a new book</button>
             </form>
         </dialog>
 </body>
