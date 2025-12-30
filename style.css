@@ -115,8 +115,9 @@ button:hover {
     justify-content: center;
 }
 
-#add {
-    display: flex;
+#add, #delete, #update, #new {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -125,7 +126,7 @@ button:hover {
     margin: 2.5rem 0;
 }
 
-#add img {
+#add img,  #delete img, #update img, #new img {
     height: 1rem;
     width: auto;
 }
@@ -138,7 +139,6 @@ button:hover {
     grid-template-rows: repeat(auto-fit, 17.5rem);
     gap: 2.5rem;
 
-    /* height: 100%; */
     padding: 0 2.5rem;
 }
 
@@ -290,7 +290,6 @@ label[for='book-read'] {
 
 
 #new {
-    display: block;
     margin: 2.5rem auto 0rem auto;
 }
 

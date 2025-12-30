@@ -54,6 +54,11 @@ function displayBooks(book) {
             book.read ? readButton.classList.add('read') : readButton.classList.add('unread');
             let modifyButton = document.createElement('button');
             modifyButton.classList.add('modify');
+                modifyButton.addEventListener('click', function(event) {
+                    let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
+                    console.log(currentBook);
+                    // dialog.showModal();
+                })
             buttonDiv.appendChild(readButton);
             buttonDiv.appendChild(modifyButton);
 
