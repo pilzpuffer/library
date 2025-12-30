@@ -202,7 +202,8 @@ dialog[open] {
 }
 
 dialog[open] form {
-    padding: 2.5rem 5rem;
+    padding: 2.5rem 7.5rem;
+    width: 30rem;
 }
 
 label {
@@ -221,6 +222,62 @@ input, select {
     width: 100%;
     border: 2px solid black;
 }
+
+#end-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+
+    column-gap: 2.5rem;
+}
+
+#book-pages {
+    border-radius: 12.5% / 50%;
+}
+
+label[for='book-read'] {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    padding-left: 0;
+    justify-self: center;
+}
+
+[role="switch"] {
+	--height: 2.5rem;
+	--width: 0.8;
+
+	appearance: none;
+	display: inline-block;
+    padding: 0;
+	background-color: #e5e5e5;
+	height: var(--height);
+	width: calc(var(--height) * calc(1 + var(--width)));
+	border: 0;
+	border-radius: 99em;
+    transition: background-color 100ms ease-in-out;
+}
+
+[role="switch"]::after {
+	content: url('./image-assets/eye-closed.svg');
+	display: block;
+	aspect-ratio: 1;
+	background-color: white;
+	border: max(2px, 0.125em) solid #808080;
+	height: 100%;
+	border-radius: 50%;
+    transition: translate 100ms ease-in-out;
+}
+
+[role="switch"]:checked {
+	background-color: #0088cc;
+}
+
+[role="switch"]:checked::after {
+	border-color: #0088cc;
+    content: url('./image-assets/eye-outline.svg');
+	translate: calc(var(--height) * var(--width)) 0;
+}
+
 
 #new {
     display: block;
