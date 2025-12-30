@@ -288,8 +288,11 @@ label[for='book-read'] {
 	translate: calc(var(--height) * var(--width)) 0;
 }
 
-
 #new {
     margin: 2.5rem auto 0rem auto;
+}
+
+.removed {
+    display: none !important;
 }
 

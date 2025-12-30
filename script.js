@@ -20,16 +20,20 @@ function addBookToLibrary(name, author, genre, pages, read) {
     myLibrary.push(newBook);
 }
 
-const add = document.querySelector("#add");
-const close = document.querySelector("#close");
+const addButton = document.querySelector("#add");
+const closeButton = document.querySelector("#close");
+let deleteButton = document.querySelector("#delete");
+let updateButton = document.querySelector("#update");
 const dialog = document.querySelector("dialog");
 
 add.addEventListener('click', () => {
     dialog.showModal();
 }) 
 
-close.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
     dialog.close();
+    deleteButton.classList.add("removed");
+    updateButton.classList.add("removed");
 })
 
 let bookShelf = document.querySelector('.content');
@@ -57,7 +61,11 @@ function displayBooks(book) {
                 modifyButton.addEventListener('click', function(event) {
                     let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
                     console.log(currentBook);
-                    // dialog.showModal();
+
+                    deleteButton.classList.remove("removed");
+                    updateButton.classList.remove("removed");
+
+                    dialog.showModal();
                 })
             buttonDiv.appendChild(readButton);
             buttonDiv.appendChild(modifyButton);
@@ -91,4 +99,6 @@ bookForm.addEventListener('submit', function(event) {
     displayBooks(myLibrary[myLibrary.length - 1]);
     dialog.close();
     bookForm.reset();
+    deleteButton.classList.remove("removed");
+    updateButton.classList.remove("removed");
 })

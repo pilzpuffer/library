@@ -8,3 +8,5 @@ The 'toggle' switch is based on a solution from the <a href=" https://gomakethin
 
 Plan:
 add custom styling for the 'select' element
+adjust styling/placement of delete/update buttons
+prevent books from being submitted/created without full form information!!
