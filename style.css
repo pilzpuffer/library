@@ -145,10 +145,6 @@ button:hover {
 .book {
     display: grid;
     grid-template-rows: 10.5rem 1fr;
-    /* placeholder color values! */
-    background-color: black;
-    color: wheat;
-    /* placeholder color values! */
     
     height: 100%;
     width: 100%;

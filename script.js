@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-function Book (name, author, pages, read) {
+function Book (name, author, genre, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.")
     }
@@ -8,12 +8,13 @@ function Book (name, author, pages, read) {
     id = null;
     this.name = name;
     this.author = author;
+    this.genre = genre;
     this.pages = pages;
     this.read = read;
 }
 
-function addBookToLibrary(name, author, pages, read) {
-    let newBook = new Book(name, author, pages, read);
+function addBookToLibrary(name, author, genre, pages, read) {
+    let newBook = new Book(name, author, genre, pages, read);
     newBook.id = crypto.randomUUID();
 
     myLibrary.push(newBook);
@@ -31,9 +32,6 @@ close.addEventListener('click', () => {
     dialog.close();
 })
 
-addBookToLibrary('testBook', 'testAuthor', 3, false);
-addBookToLibrary('testBook2', 'testAuthor2', 55, true);
-
 let bookShelf = document.querySelector('.content');
 
 myLibrary.forEach(function (book){
@@ -43,6 +41,7 @@ myLibrary.forEach(function (book){
 function displayBooks(book) {
     let holderDiv = document.createElement('div');
     holderDiv.classList.add("book")
+    holderDiv.style.backgroundColor = `var(--${book.genre.toLowerCase()})`;
 
     let topDiv = document.createElement('div');
     topDiv.classList.add('top-part')
@@ -83,7 +82,7 @@ bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     
-    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-pages"), data.get("book-read"));
+    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), data.get("book-read"));
     displayBooks(myLibrary[myLibrary.length - 1]);
     dialog.close();
     bookForm.reset();
