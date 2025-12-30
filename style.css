@@ -14,6 +14,20 @@
     font-style: italic;
 }
 
+:root {
+    --crime: rgb(224, 158, 132);
+    --fantasy: rgb(138, 196, 120);  
+    --romance: rgb(252, 142, 184);
+    --sci-fi: rgb(160, 188, 240);
+    --horror: rgb(154, 142, 168);  
+    --biography: rgb(244, 206, 126);
+    --history: rgb(208, 178, 136);  
+    --poetry: rgb(118, 198, 200); 
+    --science: rgb(208, 192, 228);
+    --travel: rgb(204, 220, 132); 
+    --other: rgb(179, 179, 179);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
