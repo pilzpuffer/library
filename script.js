@@ -76,3 +76,15 @@ function displayBooks(book) {
 
     bookShelf.appendChild(holderDiv);
 }
+
+let bookForm = document.querySelector("#new-book");
+
+bookForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-pages"), data.get("book-read"));
+    displayBooks(myLibrary[myLibrary.length - 1]);
+    dialog.close();
+    bookForm.reset();
+})
