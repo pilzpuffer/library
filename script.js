@@ -18,6 +18,7 @@ function addBookToLibrary(name, author, genre, pages, read) {
     newBook.id = crypto.randomUUID();
 
     myLibrary.push(newBook);
+    console.log(newBook);
 }
 
 const addButton = document.querySelector("#add");
@@ -25,6 +26,7 @@ const closeButton = document.querySelector("#close");
 let deleteButton = document.querySelector("#delete");
 let updateButton = document.querySelector("#update");
 const dialog = document.querySelector("dialog");
+let bookForm = document.querySelector("#new-book");
 
 add.addEventListener('click', () => {
     dialog.showModal();
@@ -32,12 +34,15 @@ add.addEventListener('click', () => {
 
 closeButton.addEventListener('click', () => {
     dialog.close();
-    deleteButton.classList.add("removed");
-    updateButton.classList.add("removed");
+
+    if (deleteButton.classList.contains("removed") 
+        && updateButton.classList.contains("removed")) {
+            deleteButton.classList.add("removed");
+            updateButton.classList.add("removed");
+    }
 })
 
 let bookShelf = document.querySelector('.content');
-
 myLibrary.forEach(function (book){
     displayBooks(book);
 })
@@ -46,6 +51,9 @@ function displayBooks(book) {
     let holderDiv = document.createElement('div');
     holderDiv.classList.add("book")
     holderDiv.style.backgroundColor = `var(--${book.genre.toLowerCase()})`;
+    if (holderDiv.dataset.id == undefined) {
+       holderDiv.dataset.id = book.id; 
+    }  
 
     let topDiv = document.createElement('div');
     topDiv.classList.add('top-part')
@@ -66,6 +74,21 @@ function displayBooks(book) {
                     updateButton.classList.remove("removed");
 
                     dialog.showModal();
+
+                    let currentBookObject = myLibrary.filter(obj => {
+                        return obj.id === currentBook.dataset.id;
+                    })
+
+                    document.getElementById('book-name').value = currentBookObject.name;
+                    document.getElementById('book-author').value = currentBookObject.author;
+                    document.getElementById('book-genre').value = currentBookObject.genre;
+                    document.getElementById('book-pages').value = currentBookObject.pages;
+                    document.getElementById('book-read').value = currentBookObject.read;
+
+                    updateButton.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        
+                    })
                 })
             buttonDiv.appendChild(readButton);
             buttonDiv.appendChild(modifyButton);
@@ -89,8 +112,6 @@ function displayBooks(book) {
     bookShelf.appendChild(holderDiv);
 }
 
-let bookForm = document.querySelector("#new-book");
-
 bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -101,4 +122,4 @@ bookForm.addEventListener('submit', function(event) {
     bookForm.reset();
     deleteButton.classList.remove("removed");
     updateButton.classList.remove("removed");
-})
+});
