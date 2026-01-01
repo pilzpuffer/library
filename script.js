@@ -29,6 +29,7 @@ const dialog = document.querySelector("dialog");
 let bookForm = document.querySelector("#new-book");
 
 add.addEventListener('click', () => {
+    bookForm.reset();
     dialog.showModal();
 }) 
 
@@ -77,11 +78,11 @@ function displayBooks(book) {
 
                     let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
 
-                    document.getElementById('book-name').value = currentBookObject.name;
-                    document.getElementById('book-author').value = currentBookObject.author;
-                    document.getElementById('book-genre').value = currentBookObject.genre;
-                    document.getElementById('book-pages').value = currentBookObject.pages;
-                    document.getElementById('book-read').value = currentBookObject.read;
+                    for (let i = 0; i < bookForm.length; i++) {
+                         if (bookForm.elements[i].type !== 'submit') {
+                            bookForm.elements[i].value = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];
+                        } 
+                    }
 
                     updateButton.addEventListener('click', function(event) {
                         event.preventDefault();
