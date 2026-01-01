@@ -28,7 +28,12 @@ let updateButton = document.querySelector("#update");
 const dialog = document.querySelector("dialog");
 let bookForm = document.querySelector("#new-book");
 
-add.addEventListener('click', () => {
+addButton.addEventListener('click', () => {
+    if (!deleteButton.classList.contains("removed") 
+    && !updateButton.classList.contains("removed")) {
+        deleteButton.classList.add("removed");
+        updateButton.classList.add("removed");
+    }
     bookForm.reset();
     dialog.showModal();
 }) 
@@ -36,8 +41,8 @@ add.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
     dialog.close();
 
-    if (deleteButton.classList.contains("removed") 
-        && updateButton.classList.contains("removed")) {
+    if (!deleteButton.classList.contains("removed") 
+        && !updateButton.classList.contains("removed")) {
             deleteButton.classList.add("removed");
             updateButton.classList.add("removed");
     }
@@ -64,7 +69,7 @@ function displayBooks(book) {
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('book-controls');
             let readButton = document.createElement('button');
-            book.read ? readButton.classList.add('read') : readButton.classList.add('unread');
+            book.read == null ? readButton.classList.add('unread') : readButton.classList.add('read');
             let modifyButton = document.createElement('button');
             modifyButton.classList.add('modify');
                 modifyButton.addEventListener('click', function(event) {
