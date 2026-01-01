@@ -69,7 +69,18 @@ function displayBooks(book) {
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('book-controls');
             let readButton = document.createElement('button');
-            book.read == null ? readButton.classList.add('unread') : readButton.classList.add('read');
+
+            let readCheck = function() {
+                if (book.read == null || book.read === false) {
+                    readButton.classList.add('unread');
+                    readButton.classList.remove('read');
+                } else {
+                    readButton.classList.add('read');
+                    readButton.classList.remove('unread');
+                }
+            }
+            readCheck();
+
             let modifyButton = document.createElement('button');
             modifyButton.classList.add('modify');
                 modifyButton.addEventListener('click', function(event) {
@@ -90,8 +101,30 @@ function displayBooks(book) {
                     }
 
                     updateButton.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        
+                        event.preventDefault();   
+
+                        let updateBook = function(currentBookObject) {
+                            Object.keys(currentBookObject).forEach(function(key) {
+                                if (bookForm.elements[`book-${key}`] && bookForm.elements[`book-${key}`].type !== 'submit') {
+                                    if (bookForm.elements[`book-${key}`].type == 'checkbox') {
+                                        myLibrary[myLibrary.indexOf(currentBookObject)][key] = bookForm.elements[`book-${key}`].checked;
+                                    } else {
+                                        myLibrary[myLibrary.indexOf(currentBookObject)][key] = bookForm.elements[`book-${key}`].value;
+                                    }
+                                }
+                            })
+
+                            
+                            titleDiv.textContent = book.name;
+                            holderDiv.style.backgroundColor = `var(--${book.genre.toLowerCase()})`;
+                            authorDiv.textContent = book.author;
+                            pagesDiv.textContent = book.pages;
+                            readCheck();
+                            
+                        }
+
+                        updateBook(currentBookObject);
+                        dialog.close();
                     })
                 })
             buttonDiv.appendChild(readButton);
@@ -124,6 +157,4 @@ bookForm.addEventListener('submit', function(event) {
     displayBooks(myLibrary[myLibrary.length - 1]);
     dialog.close();
     bookForm.reset();
-    deleteButton.classList.remove("removed");
-    updateButton.classList.remove("removed");
 });
