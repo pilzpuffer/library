@@ -75,9 +75,7 @@ function displayBooks(book) {
 
                     dialog.showModal();
 
-                    let currentBookObject = myLibrary.filter(obj => {
-                        return obj.id === currentBook.dataset.id;
-                    })
+                    let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
 
                     document.getElementById('book-name').value = currentBookObject.name;
                     document.getElementById('book-author').value = currentBookObject.author;
