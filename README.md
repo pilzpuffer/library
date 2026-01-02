@@ -10,3 +10,4 @@ Plan:
 add custom styling for the 'select' element
 adjust styling/placement of delete/update buttons
 prevent books from being submitted/created without full form information!!
+'read' books actually start out in false state - finds the source of that problem!!

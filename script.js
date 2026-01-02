@@ -18,7 +18,6 @@ function addBookToLibrary(name, author, genre, pages, read) {
     newBook.id = crypto.randomUUID();
 
     myLibrary.push(newBook);
-    console.log(newBook);
 }
 
 const addButton = document.querySelector("#add");
@@ -71,7 +70,7 @@ function displayBooks(book) {
             let readButton = document.createElement('button');
 
             let readCheck = function() {
-                if (book.read == null || book.read === false) {
+                if (book.read === false) {
                     readButton.classList.add('unread');
                     readButton.classList.remove('read');
                 } else {
@@ -80,6 +79,19 @@ function displayBooks(book) {
                 }
             }
             readCheck();
+            readButton.addEventListener('click', function(event) {
+                let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
+                let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
+
+                if (currentBookObject.read === true) {
+                    bookForm.elements['book-read'].checked = false;    
+                } else {
+                    bookForm.elements['book-read'].checked = true;
+                }
+                currentBookObject.read = bookForm.elements['book-read'].checked;
+
+                readCheck();  
+            })
 
             let modifyButton = document.createElement('button');
             modifyButton.classList.add('modify');
@@ -152,9 +164,11 @@ function displayBooks(book) {
 bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    
-    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), data.get("book-read"));
+
+    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), bookForm.elements['book-read'].checked);
+
     displayBooks(myLibrary[myLibrary.length - 1]);
+
     dialog.close();
     bookForm.reset();
 });
