@@ -23,7 +23,7 @@
         <div class="content">               
         </div>
 
-        <dialog>
+        <dialog id="new-book-dialog">
             <button id="close"></button>
             <form id="new-book">
                 <div>
@@ -81,6 +81,14 @@
                     <img src="./image-assets/plus.svg">
                     Add book
                 </button>
+            </form>
+        </dialog>
+
+        <dialog id="confirmation">
+            <form>
+                Are you sure you want to remove this book?
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
             </form>
         </dialog>
 </body>

@@ -206,12 +206,12 @@ button:hover {
     justify-self: end;
 }
 
-dialog[open] {
+dialog#new-book-dialog[open] {
     display: grid;
     grid-template-rows: repeat(auto-fit, 1fr);
 }
 
-dialog[open] form {
+dialog#new-book-dialog[open] form {
     padding: 2.5rem 7.5rem;
     width: 30rem;
 }

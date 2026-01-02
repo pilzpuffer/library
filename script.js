@@ -24,7 +24,10 @@ const addButton = document.querySelector("#add");
 const closeButton = document.querySelector("#close");
 let deleteButton = document.querySelector("#delete");
 let updateButton = document.querySelector("#update");
-const dialog = document.querySelector("dialog");
+const dialog = document.querySelector("#new-book-dialog");
+const confirmation = document.querySelector("#confirmation");
+let yesButton = document.querySelector("#yes");
+let noButton = document.querySelector("#no");
 let bookForm = document.querySelector("#new-book");
 
 addButton.addEventListener('click', () => {
@@ -142,10 +145,21 @@ function displayBooks(book) {
                     deleteButton.addEventListener('click', function(event) {
                         event.preventDefault();  
 
-                        myLibrary.splice(myLibrary.indexOf(currentBookObject), 1);
-                        bookShelf.removeChild(currentBook);
+                        confirmation.showModal();
 
-                        dialog.close();
+                        yesButton.addEventListener('click', function(event) {
+                            event.preventDefault();  
+                            myLibrary.splice(myLibrary.indexOf(currentBookObject), 1);
+                            bookShelf.removeChild(currentBook);
+
+                            confirmation.close();
+                            dialog.close();
+                        })
+
+                        noButton.addEventListener('click', function(event) {
+                            event.preventDefault(); 
+                            confirmation.close();
+                        })
                     })
 
 
