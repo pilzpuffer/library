@@ -97,14 +97,14 @@ function displayBooks(book) {
             modifyButton.classList.add('modify');
                 modifyButton.addEventListener('click', function(event) {
                     let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
+                    let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
+
                     console.log(currentBook);
 
                     deleteButton.classList.remove("removed");
                     updateButton.classList.remove("removed");
 
                     dialog.showModal();
-
-                    let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
 
                     for (let i = 0; i < bookForm.length; i++) {
                          if (bookForm.elements[i].type !== 'submit') {
@@ -138,6 +138,17 @@ function displayBooks(book) {
                         updateBook(currentBookObject);
                         dialog.close();
                     })
+
+                    deleteButton.addEventListener('click', function(event) {
+                        event.preventDefault();  
+
+                        myLibrary.splice(myLibrary.indexOf(currentBookObject), 1);
+                        bookShelf.removeChild(currentBook);
+
+                        dialog.close();
+                    })
+
+
                 })
             buttonDiv.appendChild(readButton);
             buttonDiv.appendChild(modifyButton);
