@@ -65,23 +65,25 @@
                     <input type="number" min="1" name="book-pages" id="book-pages" required>
 
                     <label for="book-read">Read?</label>
-                    <input type="checkbox" name="book-read" id="book-read" role="switch" required>
+                    <input type="checkbox" name="book-read" id="book-read" role="switch">
                 </div>
 
-                <button id="delete" class="removed">
-                    <img src="./image-assets/trash-can-outline.svg">
-                    Delete
-                </button>
+                <div class="modify-menu-buttons">
+                    <button id="update" class="removed">
+                        <img src="./image-assets/refresh.svg">
+                        Update
+                    </button>
 
-                <button id="update" class="removed">
-                    <img src="./image-assets/refresh.svg">
-                    Update
-                </button>
+                    <button id="delete" class="removed">
+                        <img src="./image-assets/trash-can-outline.svg">
+                        Delete
+                    </button>
+                </div>
 
                 <button id="new">
-                    <img src="./image-assets/plus.svg">
-                    Add book
-                </button>
+                        <img src="./image-assets/plus.svg">
+                        Add book
+                    </button>
             </form>
         </dialog>
 

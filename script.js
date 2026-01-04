@@ -22,6 +22,7 @@ function addBookToLibrary(name, author, genre, pages, read) {
 
 const addButton = document.querySelector("#add");
 const closeButton = document.querySelector("#close");
+let newButton = document.querySelector("#new");
 let deleteButton = document.querySelector("#delete");
 let updateButton = document.querySelector("#update");
 const dialog = document.querySelector("#new-book-dialog");
@@ -31,6 +32,8 @@ let noButton = document.querySelector("#no");
 let bookForm = document.querySelector("#new-book");
 
 addButton.addEventListener('click', () => {
+    newButton.classList.remove("removed");
+
     if (!deleteButton.classList.contains("removed") 
     && !updateButton.classList.contains("removed")) {
         deleteButton.classList.add("removed");
@@ -98,6 +101,8 @@ function displayBooks(book) {
 
             let modifyButton = document.createElement('button');
             modifyButton.classList.add('modify');
+            newButton.classList.add("removed");
+            
                 modifyButton.addEventListener('click', function(event) {
                     let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
                     let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
@@ -111,7 +116,7 @@ function displayBooks(book) {
 
                     for (let i = 0; i < bookForm.length; i++) {
                         if (bookForm.elements[i].type !== 'submit') {
-                            if (bookForm.elements[i].type !== 'submit') {
+                            if (bookForm.elements[i].type === 'checkbox') {
                                 bookForm.elements[i].checked = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];
                             } else {
                                 bookForm.elements[i].value = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];

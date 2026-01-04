@@ -26,6 +26,8 @@
     --science: rgb(208, 192, 228);
     --travel: rgb(204, 220, 132); 
     --other: rgb(179, 179, 179);
+
+    --button-hover: rgb(255, 209, 220);
 }
 
 *, *::before, *::after {
@@ -75,9 +77,7 @@ button {
 }
 
 button:hover {
-    /* placeholder color */
-    background-color: pink;
-    /* placeholder color */
+    background-color: var(--button-hover);
 }
 
 .content-holder {
@@ -121,6 +121,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    padding: 0.9rem 1.25rem;
 
     width: 10rem;
     margin: 2.5rem 0;
@@ -296,3 +297,12 @@ label[for='book-read'] {
     display: none !important;
 }
 
+.modify-menu-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 6.25rem);
+    gap: 1.25rem;
+}
+
+#delete, #update {
+    width: 7rem;
+}
