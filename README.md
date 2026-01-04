@@ -7,6 +7,5 @@ All icons in this project come from the <a href="https://pictogrammers.com/">Pic
 The 'toggle' switch is based on a solution from the <a href=" https://gomakethings.com/creating-a-toggle-switch-with-just-css/">Kelp UI library</a>
 
 Plan:
-add custom styling for the 'select' element
 adjust styling/placement of delete/update buttons
-prevent books from being submitted/created without full form information!!
+adjust styling of the 'confirmation' popup

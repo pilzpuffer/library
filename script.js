@@ -110,9 +110,14 @@ function displayBooks(book) {
                     dialog.showModal();
 
                     for (let i = 0; i < bookForm.length; i++) {
-                         if (bookForm.elements[i].type !== 'submit') {
-                            bookForm.elements[i].value = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];
-                        } 
+                        if (bookForm.elements[i].type !== 'submit') {
+                            if (bookForm.elements[i].type !== 'submit') {
+                                bookForm.elements[i].checked = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];
+                            } else {
+                                bookForm.elements[i].value = currentBookObject[`${bookForm.elements[i].name.split("-")[1]}`];
+                            }
+   
+                        }              
                     }
 
                     updateButton.addEventListener('click', function(event) {

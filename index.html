@@ -28,17 +28,18 @@
             <form id="new-book">
                 <div>
                     <label for="book-name">Title</label>
-                    <input type="text" name="book-name" id="book-name">
+                    <input type="text" name="book-name" id="book-name" required>
                 </div>
 
                 <div>
                     <label for="book-author">Author</label>
-                    <input type="text" name="book-author" id="book-author">
+                    <input type="text" name="book-author" id="book-author" required>
                 </div>
 
                 <div>
                     <label for="book-genre">Genre</label>
                     <select name="book-genre" id="book-genre">
+                        <option disabled selected style="display:none"> -- select an option -- </option>
                         <optgroup label="Fiction">
                             <option>Crime</option>
                             <option>Fantasy</option>
@@ -61,10 +62,10 @@
 
                 <div id="end-form">
                     <label for="book-pages">Pages</label>
-                    <input type="number" min="1" name="book-pages" id="book-pages">
+                    <input type="number" min="1" name="book-pages" id="book-pages" required>
 
                     <label for="book-read">Read?</label>
-                    <input type="checkbox" name="book-read" id="book-read" role="switch">
+                    <input type="checkbox" name="book-read" id="book-read" role="switch" required>
                 </div>
 
                 <button id="delete" class="removed">
