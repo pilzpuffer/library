@@ -132,6 +132,10 @@ button:hover {
     width: auto;
 }
 
+#yes, #no {
+    padding: 0.6rem 0.9rem;
+}
+
 .content {
     display: grid;
     justify-content: center;
@@ -301,8 +305,18 @@ label[for='book-read'] {
     display: grid;
     grid-template-columns: repeat(2, 6.25rem);
     gap: 1.25rem;
+
+    justify-content: center;
 }
 
 #delete, #update {
     width: 7rem;
+}
+
+#confirmation {
+    padding: 2.5rem;
+} 
+
+#confirmation form div + div {
+    padding-top: 2.5rem;
 }
