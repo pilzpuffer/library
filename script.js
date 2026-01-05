@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book (name, author, genre, pages, read) {
     if (!new.target) {
@@ -159,8 +159,9 @@ function displayBooks(book) {
 
                         yesButton.addEventListener('click', function(event) {
                             event.preventDefault();  
-                            myLibrary.splice(myLibrary.indexOf(currentBookObject), 1);
+                            
                             bookShelf.removeChild(currentBook);
+                            myLibrary = myLibrary.filter((book) => book !== currentBookObject);                          
 
                             confirmation.close();
                             dialog.close();
