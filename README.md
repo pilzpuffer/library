@@ -9,3 +9,6 @@ Since I've also implemented an option to modify existing books, I also got a lot
 All icons in this project come from the <a href="https://pictogrammers.com/">Pictogrammers</a> website, it's a really helpful tool for finding icons.
 
 The 'toggle' switch is based on a solution from the <a href=" https://gomakethings.com/creating-a-toggle-switch-with-just-css/">Kelp UI library</a>
+
+ISSUE: for some reason, when more than one book is removed, the following error shows up:  Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. 
+Needs further investigation
