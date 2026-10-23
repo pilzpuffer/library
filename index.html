@@ -25,15 +25,15 @@
 
         <dialog id="new-book-dialog">
             <button id="close"></button>
-            <form id="new-book">
+            <form id="new-book" novalidate>
                 <div>
                     <label for="book-name">Title</label>
-                    <input type="text" name="book-name" id="book-name" required>
+                    <input type="text" name="book-name" id="book-name" required autocomplete="off">
                 </div>
 
                 <div>
                     <label for="book-author">Author</label>
-                    <input type="text" name="book-author" id="book-author" required>
+                    <input type="text" name="book-author" id="book-author" required autocomplete="off">
                 </div>
 
                 <div>
@@ -62,7 +62,7 @@
 
                 <div id="end-form">
                     <label for="book-pages">Pages</label>
-                    <input type="number" min="1" name="book-pages" id="book-pages" required>
+                    <input type="number" min="1" name="book-pages" id="book-pages" required autocomplete="off">
 
                     <label for="book-read">Read?</label>
                     <input type="checkbox" name="book-read" id="book-read" role="switch">

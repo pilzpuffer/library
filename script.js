@@ -53,6 +53,32 @@ closeButton.addEventListener('click', () => {
     }
 })
 
+
+let bookTitle = document.querySelector("#book-name");
+let bookAuthor = document.querySelector("#book-author");
+let bookGenre = document.querySelector("#book-genre");
+let bookPages = document.querySelector("#book-pages");
+
+bookAuthor.addEventListener('input', function() {
+    if (bookAuthor.value.length < 3) {
+        bookAuthor.setCustomValidity("Book authors tend to have longer names...");
+    } else {
+        bookAuthor.setCustomValidity("");
+    }
+    bookAuthor.reportValidity()
+})
+
+bookPages.addEventListener('input', function() {
+    console.log(bookPages.value)
+    if (parseInt(bookPages.value) < 3) {
+        bookPages.setCustomValidity("Is this a brochure? Add an actual book, please");
+    } else {
+        bookPages.setCustomValidity("");
+    }
+    bookPages.reportValidity()
+})
+
+
 let bookShelf = document.querySelector('.content');
 myLibrary.forEach(function (book){
     displayBooks(book);
@@ -199,12 +225,15 @@ function displayBooks(book) {
 
 bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
+    if (bookForm.reportValidity() === false) {
+        console.log("hm..")
+    } else {
+        const data = new FormData(event.target);
+        addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), bookForm.elements['book-read'].checked);
+        displayBooks(myLibrary[myLibrary.length - 1]);
+        dialog.close();
+        bookForm.reset();
+    }
 
-    addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), bookForm.elements['book-read'].checked);
-
-    displayBooks(myLibrary[myLibrary.length - 1]);
-
-    dialog.close();
-    bookForm.reset();
+    
 });
