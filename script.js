@@ -1,20 +1,20 @@
 let myLibrary = [];
 
-function Book (name, author, genre, pages, read) {
+function Book (title, author, genre, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.")
     }
 
     id = null;
-    this.name = name;
+    this.title = title;
     this.author = author;
     this.genre = genre;
     this.pages = pages;
     this.read = read;
 }
 
-function addBookToLibrary(name, author, genre, pages, read) {
-    let newBook = new Book(name, author, genre, pages, read);
+function addBookToLibrary(title, author, genre, pages, read) {
+    let newBook = new Book(title, author, genre, pages, read);
     newBook.id = crypto.randomUUID();
 
     myLibrary.push(newBook);
@@ -54,7 +54,7 @@ closeButton.addEventListener('click', () => {
 })
 
 
-let bookTitle = document.querySelector("#book-name");
+let bookTitle = document.querySelector("#book-title");
 let bookAuthor = document.querySelector("#book-author");
 let bookGenre = document.querySelector("#book-genre");
 let bookPages = document.querySelector("#book-pages");
@@ -69,7 +69,6 @@ bookAuthor.addEventListener('input', function() {
 })
 
 bookPages.addEventListener('input', function() {
-    console.log(bookPages.value)
     if (parseInt(bookPages.value) < 3) {
         bookPages.setCustomValidity("Is this a brochure? Add an actual book, please");
     } else {
@@ -95,7 +94,7 @@ function displayBooks(book) {
     let topDiv = document.createElement('div');
     topDiv.classList.add('top-part')
         let titleDiv = document.createElement('div');
-        titleDiv.textContent = book.name;
+        titleDiv.textContent = book.title;
 
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('book-controls');
@@ -133,8 +132,6 @@ function displayBooks(book) {
                     let currentBook = event.currentTarget.parentElement.parentElement.parentElement;
                     let currentBookObject = myLibrary.find((book) => book.id === currentBook.dataset.id);
 
-                    console.log(currentBook);
-
                     deleteButton.classList.remove("removed");
                     updateButton.classList.remove("removed");
 
@@ -166,7 +163,7 @@ function displayBooks(book) {
                             })
 
                             
-                            titleDiv.textContent = book.name;
+                            titleDiv.textContent = book.title;
                             holderDiv.style.backgroundColor = `var(--${book.genre.toLowerCase()})`;
                             authorDiv.textContent = book.author;
                             pagesDiv.textContent = book.pages;
@@ -225,15 +222,36 @@ function displayBooks(book) {
 
 bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    if (bookForm.reportValidity() === false) {
-        console.log("hm..")
-    } else {
+    if (bookForm.reportValidity()) {
         const data = new FormData(event.target);
-        addBookToLibrary(data.get("book-name"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), bookForm.elements['book-read'].checked);
+        addBookToLibrary(data.get("book-title"), data.get("book-author"), data.get("book-genre"), data.get("book-pages"), bookForm.elements['book-read'].checked);
         displayBooks(myLibrary[myLibrary.length - 1]);
         dialog.close();
         bookForm.reset();
-    }
+    } else {
+        document.querySelectorAll("input").forEach((input) => {
+            if (input.validity.valueMissing) {
+                if (input.id === 'book-pages') {
+                    input.setCustomValidity(`Books tend to have at least SOME ${input.id.split("-")[1]}`)
+                } else {
+                    input.setCustomValidity(`Books tend to have ${input.id.split("-")[1]}s`)
+                }
+            } else if (input.id === 'book-author' && input.value.length < 3) { 
+                input.setCustomValidity("This name seems to be too short, please double-check")
+            } else if (input.id === 'book-pages' && parseInt(input.value) < 3) {
+               input.setCustomValidity("Please add a book, not a brochure")
+            } else {
+                input.setCustomValidity("")
+            }
+        })
 
-    
+
+        if (!bookGenre.validity.valid) {
+            if (bookGenre.validity.valueMissing) {
+                bookGenre.setCustomValidity("Please select a genre for your book")
+            } else {
+                bookGenre.setCustomValidity("")
+            }
+        }  
+    }
 });
